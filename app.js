@@ -8,10 +8,12 @@
 
 // Event handling, user interaction is what starts the code execution.
 
+document.querySelector('input[value="go shopping"]').setAttribute('value', 'Go Shopping')
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
 var incompleteTaskHolder=document.getElementById("planned");//ul of #planned
 var completedTasksHolder=document.getElementById("completed");//completed
+
 
 
 //New task list item
@@ -33,18 +35,21 @@ var createNewTaskElement=function(taskString){
     var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='task-name';
+    listItem.className="task";
+    label.className="task-name";
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="task-name";
+    editInput.className="task-input";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
     editButton.className="edit";
 
     deleteButton.className="del";
-    deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.src="./remove.svg";
+    deleteButtonImg.className="del-icon";
+    deleteButtonImg.alt="";
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -85,21 +90,20 @@ var editTask=function(){
     var editInput=listItem.querySelector('input[type=text]');
     var label=listItem.querySelector("label");
     var editBtn=listItem.querySelector(".edit");
-    var containsClass=listItem.classList.contains("edit-mode");
-    //If class of the parent is .edit-mode
-    if(containsClass){
-
-        //switch to .edit-mode
+    var containsId= (listItem.hasAttribute('id') && listItem.id === "edit-mode");
+    //If id of the parent is #edit-mode
+    if(containsId){
+    
+        //switch to #edit-mode
         //label becomes the inputs value.
+        listItem.removeAttribute('id');
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
     }else{
+        listItem.id = "edit-mode";
         editInput.value=label.innerText;
         editBtn.innerText="Save";
     }
-
-    //toggle .edit-mode on the parent.
-    listItem.classList.toggle("edit-mode");
 };
 
 
