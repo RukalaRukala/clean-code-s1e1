@@ -44,16 +44,16 @@
 }
 
 .tasks-list {
-    margin:0;
+    margin: 0;
     padding: 0px;
 }
 
 .task, .list-name {
-    list-style:none;
+    list-style: none;
 }
 
 .task-input,.add,.del,.edit{
-    outline:none;
+    outline: none;
 }
 
 .add,.del,.edit {
@@ -157,14 +157,14 @@
 
 /* Edit Task */
 .tasks-list .task .task-input[type="text"] {
-    display:none
+    display: none
 }
 
 .tasks-list #edit-mode .task-input[type="text"] {
-    display:inline-block;
-    width:224px
+    display: inline-block;
+    width: 224px
 }
 
 .tasks-list #edit-mode .task-name {
-    display:none;
+    display: none;
 }
